@@ -1,0 +1,42 @@
+# <%= @app_title %>
+
+<!-- One or two sentences on what this app does and who uses it. -->
+
+## Commands
+- Setup: `bin/setup`
+- Run: `bin/dev` (port 3000)
+- Tests: `bin/rails test` (one file: `bin/rails test test/models/user_test.rb`; system tests: `bin/rails test:system`)
+- Lint: `bin/rubocop -a` (runs automatically after every Ruby edit via a hook)
+- Security: `bin/brakeman --no-pager`
+
+## Stack
+- Rails 8, PostgreSQL, Hotwire (Turbo + Stimulus), importmap, Solid Queue/Cache/Cable
+- Minitest + fixtures (not RSpec, not FactoryBot)
+- rubocop-rails-omakase style
+
+## Conventions
+- Follow the `vanilla-rails` skill: CRUD resources only, thin controllers, rich models, one concern per behaviour
+- New state changes are new resources (`resource :archival`), never custom actions (`post :archive`)
+- No service objects by default; a plain Ruby object in app/models is fine when justified
+- Every model change comes with a migration and tests
+
+## Rules
+- Write the failing test first, then the code
+- Run the relevant tests and `bin/rubocop` before saying a task is done
+- Never edit `db/schema.rb` by hand; never run destructive DB commands
+- Use Tidewave's tools to evaluate code and query the database; use `get_docs` for documentation and `get_source_location` to find definitions
+<% if @multi_tenant -%>
+
+## Multi-tenancy
+- Every tenant-owned query goes through `Current.account` (e.g. `Current.account.projects.find(id)`), never `Project.find` or `Project.all`
+- See the `multi-tenancy` skill before adding a model, controller or job
+<% end -%>
+<% if @use_fizzy -%>
+
+## Reference implementation
+Fizzy (37signals) is checked out read-only at <%= @fizzy_path %>.
+When unsure how to structure a model, concern, controller, job or test, find the
+closest equivalent there and follow its shape. This file wins where they differ
+(we use PostgreSQL; Fizzy uses SQLite/MySQL and UUID keys). Look at specific
+folders; don't read the whole repo.
+<% end -%>

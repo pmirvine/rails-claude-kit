@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bin/rails test *)",
+      "Bash(bin/rails test)",
+      "Bash(bin/rails generate *)",
+      "Bash(bin/rails db:migrate *)",
+      "Bash(bin/rails db:migrate)",
+      "Bash(bin/rails db:rollback)",
+      "Bash(bin/rails routes *)",
+      "Bash(bin/rails routes)",
+      "Bash(bin/rubocop *)",
+      "Bash(bin/rubocop)",
+      "Bash(bin/brakeman *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "mcp__tidewave"
+    ],
+    "deny": [
+      "Bash(bin/rails db:drop *)",
+      "Bash(bin/rails db:reset *)",
+      "Bash(bin/rails db:schema:load *)",
+      "Read(./config/master.key)",
+      "Read(./config/credentials/*.key)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          { "type": "command", "command": "ruby \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/rubocop.rb" }
+        ]
+      }
+    ]
+  }
+}
