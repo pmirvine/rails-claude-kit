@@ -21,10 +21,12 @@ It adds:
 Optionally it clones [Fizzy](https://github.com/basecamp/fizzy) to `~/code/reference/fizzy` and gives
 Claude read-only access to it through `.claude/settings.local.json` (not committed).
 
+For a full step-by-step example, see [USAGE.md](USAGE.md).
+
 ## One-time setup
 
 ```bash
-git clone https://github.com/<you>/rails-claude-kit.git ~/code/rails-claude-kit
+git clone https://github.com/pmirvine/rails-claude-kit.git ~/code/rails-claude-kit
 gem install ruby-lsp
 ```
 
@@ -63,7 +65,7 @@ If a file already exists (for example `CLAUDE.md`), you'll be asked whether to o
 If the repository is public, you can run it straight from GitHub:
 
 ```bash
-rails new myapp -d postgresql -m https://raw.githubusercontent.com/<you>/rails-claude-kit/main/template.rb
+rails new myapp -d postgresql -m https://raw.githubusercontent.com/pmirvine/rails-claude-kit/main/template.rb
 ```
 
 The template clones the kit to a temporary folder to get its files. This doesn't work for private
