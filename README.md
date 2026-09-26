@@ -97,3 +97,5 @@ To update an existing app, re-run the `app:template` command and choose which fi
 The kit is MIT licensed (see `LICENSE`). The `vanilla-rails` skill adapts conventions from Fizzy,
 Copyright (c) 2025 37signals LLC, under the O'Saasy License (see `NOTICE`). Fizzy's licence allows
 reuse but not running a hosted service that competes with Fizzy.
+
+[![M8ven Score](https://m8ven.ai/badge/mcp/pmirvine-rails-claude-kit-lzxtz0?v=c02021f38b23abc55dbd45b021816909)](https://m8ven.ai/mcp/pmirvine-rails-claude-kit-lzxtz0)
